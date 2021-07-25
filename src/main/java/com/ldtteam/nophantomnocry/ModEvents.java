@@ -1,9 +1,9 @@
 package com.ldtteam.nophantomnocry;
 
-import net.minecraft.entity.SpawnReason;
-import net.minecraft.entity.monster.PhantomEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
+import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.monster.Phantom;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.event.AnvilUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
@@ -20,7 +20,7 @@ public class ModEvents
     @SubscribeEvent(priority = EventPriority.HIGH)
     public static void onSpecialSpawn(LivingSpawnEvent.SpecialSpawn event)
     {
-        if (!event.getWorld().isClientSide() && (event.getWorld()).dimensionType().bedWorks() && event.getEntity() instanceof PhantomEntity && !(event.getSpawnReason() == SpawnReason.SPAWN_EGG) && !(event.getSpawnReason() == SpawnReason.COMMAND))
+        if (!event.getWorld().isClientSide() && (event.getWorld()).dimensionType().bedWorks() && event.getEntity() instanceof Phantom && !(event.getSpawnReason() == MobSpawnType.SPAWN_EGG) && !(event.getSpawnReason() == MobSpawnType.COMMAND))
         {
             event.setCanceled(true);
         }
